@@ -60,6 +60,7 @@ function ItemShopping({ item } : { item: ItemType}) {
       >Buy</button>
       <input className="number-of-items"
         type="number"
+        name="amount-of-purchase"
         value={amountInput}
         onChange={(e) => handleAmountInput(item, e)}
       />

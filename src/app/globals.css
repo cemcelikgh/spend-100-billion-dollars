@@ -75,7 +75,7 @@ body {
 .container {
   width: 100%;
   max-width: 1000px;
-  min-width: 550px;
+  min-width: 500px;
   margin-left: auto;
   margin-right: auto;
   position: relative;
@@ -235,7 +235,6 @@ h2 {
 }
 
 ul {
-  margin: 0 auto;
   list-style-type: none;
   margin-block-start: 0;
   margin-block-end: 0;
@@ -249,7 +248,8 @@ ul {
 }
 
 li {
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   unicode-bidi: isolate;
   display: flex;
   justify-content: space-between;
@@ -274,7 +274,8 @@ li {
 }
 
 #total {
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   margin: 10px auto 0;
   padding-top: 10px;
   border-top: 1px solid var(--foreground);
