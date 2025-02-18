@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
-import { selectReceipt } from "../redux/slices/receiptSlice";
-import { FormatNumberFnType } from "@/types";
+import { selectReceipt } from "@/lib/features/receiptSlice";
+import type { FormatNumber } from "@/types/FunctionTypes";
 
 function Receipt() {
 
   const receipt = useSelector(selectReceipt);
 
-  const formatNumber: FormatNumberFnType = number => {
+  const formatNumber: FormatNumber = (number) => {
     if (number < 1000) {
         return number.toString();
     } else if (number < 1000000) {

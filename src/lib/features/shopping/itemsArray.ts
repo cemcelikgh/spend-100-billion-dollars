@@ -1,6 +1,6 @@
-import { ItemsType } from "@/types";
+import { ItemObje } from "@/types/ObjectTypes";
 
-const items: ItemsType = [
+const items: ItemObje[] = [
   {
     name: 'Monster Truck',
     id: 1,

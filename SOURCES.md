@@ -15,11 +15,7 @@ typescript
 <br>@types/react
 <br>@types/react-dom
 <br>Jun 2025
-<br><https://redux-toolkit.js.org/tutorials/typescript>
-
-Sample project
-<br>Jun 2025
-<br><https://neal.fun/spend/>
+<br><https://www.typescriptlang.org/download/>
 
 Prices of some products
 <br>Jun 2025

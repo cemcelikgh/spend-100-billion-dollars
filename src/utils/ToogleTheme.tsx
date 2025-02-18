@@ -1,7 +1,7 @@
-import { ToogleThemeFnType } from '@/types';
+import type { ToogThemElem } from '@/types/ElementTypes.d';
 import Image from 'next/image';
 
-const ToogleTheme: ToogleThemeFnType = (theme, setTheme) => {
+const ToogleTheme: ToogThemElem = ({ theme, setTheme }) => {
 
   function handleClick() {
     if (theme === 'light-theme') {
@@ -14,7 +14,7 @@ const ToogleTheme: ToogleThemeFnType = (theme, setTheme) => {
   return <Image id='toogle-theme'
     width={36}
     height={36}
-    src={`/theme-icons/${theme === 'light-theme' ? 'moon-solid.svg'
+    src={`images/theme-icons/${theme === 'light-theme' ? 'moon-solid.svg'
       : theme === 'dark-theme' ? 'sun-solid.svg'
       : 'eye-regular.svg'
     }`}

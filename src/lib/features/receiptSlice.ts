@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { ReceiptStateType, ReceiptItemType } from '../../types';
 import type { RootState } from '../store';
+import type { ReceItemObje } from '@/types/ObjectTypes';
 
-const initialState: ReceiptStateType = [];
+const initialState: ReceItemObje[] = [];
 
-function setReceiptItem(state: ReceiptStateType, action: PayloadAction<ReceiptItemType>) {
+function setReceiptItem(state: ReceItemObje[], action: PayloadAction<ReceItemObje>) {
   const itemIndex = state.findIndex(item => item.name === action.payload.name);
   if (itemIndex === -1) {
     if (action.payload.amount > 0) {

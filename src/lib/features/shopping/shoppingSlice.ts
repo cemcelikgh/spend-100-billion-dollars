@@ -1,15 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
+import items from './itemsArray';
+import type { ItemObje, SetAmouParaObje, ShopStatObje }
+  from '@/types/ObjectTypes';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../store';
-import { ShoppingStateType, ItemType, SetAmountFnType } from '../../../types';
-import items from '@/redux/slices/shopping-slice/itemsArray';
 
-const initialState: ShoppingStateType = {
+const initialState: ShopStatObje = {
   balance: 100000000000,
   items: items
 }
 
-function buyItem(state: ShoppingStateType, action: PayloadAction<ItemType>): void {
+function buyItem(state: ShopStatObje, action: PayloadAction<ItemObje>): void {
   if ( action.payload.price <= state.balance || action.payload.amount > 0 ) {
     const itemIndex = state.items.findIndex(item => item.id === action.payload.id);
     state.items[itemIndex].amount -= 1;
@@ -17,13 +18,13 @@ function buyItem(state: ShoppingStateType, action: PayloadAction<ItemType>): voi
   }
 }
 
-function sellItem(state: ShoppingStateType, action: PayloadAction<ItemType>): void {
+function sellItem(state: ShopStatObje, action: PayloadAction<ItemObje>): void {
   const itemIndex = state.items.findIndex(item => item.id === action.payload.id);
   state.items[itemIndex].amount += 1;
   state.balance += state.items[itemIndex].price;
 }
 
-function setAmount(state: ShoppingStateType, action: PayloadAction<SetAmountFnType>): void {
+function setAmount(state: ShopStatObje, action: PayloadAction<SetAmouParaObje>): void {
   const itemIndex = state.items.findIndex(item => item.id === action.payload.item.id);
   if (action.payload.operator === 'subtraction') {
     state.items[itemIndex].amount -= action.payload.operationValue;
@@ -35,16 +36,16 @@ function setAmount(state: ShoppingStateType, action: PayloadAction<SetAmountFnTy
 }
 
 export const shoppingSlice = createSlice({
-  name: 'app',
+  name: 'shopping',
   initialState,
-  reducers: {
-    buyItem,
-    sellItem,
-    setAmount
-  }
+  reducers: { buyItem, sellItem, setAmount }
 })
 
-export const { buyItem: buyItemAction, sellItem: sellItemAction, setAmount: setAmountAction } = shoppingSlice.actions;
+export const {
+  buyItem: buyItemAction,
+  sellItem: sellItemAction,
+  setAmount: setAmountAction
+} = shoppingSlice.actions;
 
 export const selectShopping = (state: RootState) => state.shopping;
 

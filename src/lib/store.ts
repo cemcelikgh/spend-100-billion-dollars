@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import shoppingReducer from './slices/shopping-slice/shoppingSlice';
-import receiptReducer from './slices/receiptSlice';
+import shoppingReducer from './features/shopping/shoppingSlice';
+import receiptReducer from './features/receiptSlice';
 
 export const store = configureStore({
   reducer: {

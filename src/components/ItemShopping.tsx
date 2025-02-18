@@ -1,31 +1,32 @@
-import { ItemType } from "@/types";
+import type { ItemObje } from "@/types/ObjectTypes";
 import { useDispatch, useSelector } from "react-redux";
-import { selectShopping, buyItemAction, sellItemAction, setAmountAction } from "@/redux/slices/shopping-slice/shoppingSlice";
+import { selectShopping, buyItemAction, sellItemAction, setAmountAction }
+  from "@/lib/features/shopping/shoppingSlice";
 import { useState } from "react";
-import { setReceiptItemAction } from "@/redux/slices/receiptSlice";
+import { setReceiptItemAction } from "@/lib/features/receiptSlice";
 
-function ItemShopping({ item } : { item: ItemType}) {
+function ItemShopping({ item } : { item: ItemObje }) {
 
   const { balance } = useSelector(selectShopping);
   const [buyingCount, setBuyingCount] = useState<number>(0);
   const [amountInput, setAmountInput] = useState<string>('0');
   const dispatch = useDispatch();
 
-  const handleBuyItem = (item: ItemType) => {
+  const handleBuyItem = (item: ItemObje) => {
     dispatch(buyItemAction(item));
     setBuyingCount(buyingCount + 1);
     setAmountInput(buyingCount => (Number(buyingCount) + 1).toString());
     dispatch(setReceiptItemAction({ name: item.name, amount: 1, cost: item.price }));
   };
 
-  const handleSellItem = (item: ItemType) => {
+  const handleSellItem = (item: ItemObje) => {
     dispatch(sellItemAction(item));
     setBuyingCount(buyingCount - 1);
     setAmountInput(buyingCount => (Number(buyingCount) - 1).toString());
     dispatch(setReceiptItemAction({ name: item.name, amount: -1, cost: -item.price }));
   };
 
-  const handleAmountInput = (item: ItemType, e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAmountInput = (item: ItemObje, e: React.ChangeEvent<HTMLInputElement>) => {
     const inputStrVal = e.target.value;
     if (!/^\d*$/.test(inputStrVal)) return;
     const sanitizedValue = inputStrVal.replace(/^0+/, '') || '0';
@@ -60,8 +61,9 @@ function ItemShopping({ item } : { item: ItemType}) {
       >Buy</button>
       <input className="number-of-items"
         type="number"
+        name="amount-of-purchase"
         value={amountInput}
-        onChange={(e) => handleAmountInput(item, e)}
+        onChange={(e) => {handleAmountInput(item, e)}}
       />
       <button className="item-sell"
         disabled={buyingCount === 0 ? true : false}

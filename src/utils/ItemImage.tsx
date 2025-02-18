@@ -1,10 +1,10 @@
-import { ItemImageFn } from '@/types';
+import type { ItemImagElem } from '@/types/ElementTypes.d';
 import Image from 'next/image';
  
-const ItemImage: ItemImageFn = (name, image) => {
+const ItemImage: ItemImagElem = ({ name, image }) => {
   return <Image
     alt={name}
-    src={`/item-images/images/${image}`}
+    src={`/images/item-images/${image}`}
     fill
     sizes='100%'
     style={{

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import ItemShopping from "../ItemShopping";
-import { selectShopping } from "@/redux/slices/shopping-slice/shoppingSlice";
-import ItemImage from "../../../public/item-images/itemImages";
+import ItemShopping from "./ItemShopping";
+import { selectShopping } from "@/lib/features/shopping/shoppingSlice";
+import ItemImage from "@/utils/ItemImage";
 
 function Items() {
   const { items } = useSelector(selectShopping);
@@ -9,7 +9,7 @@ function Items() {
     <div id='items'>
       {items.map((item) => <div className="item" key={item.id}>
         <div className="item-image">
-          {ItemImage(item.name, item.image)}
+          <ItemImage name={item.name} image={item.image} />
         </div>
         <div className="item-name">{item.name}</div>
         <div className="item-cost">${item.price.toLocaleString('en-US')}</div>
