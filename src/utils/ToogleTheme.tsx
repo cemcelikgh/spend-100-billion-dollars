@@ -1,15 +1,18 @@
-import type { ToogThemElem } from '@/types/ElementTypes.d';
 import Image from 'next/image';
 
-const ToogleTheme: ToogThemElem = ({ theme, setTheme }) => {
+const ToogleTheme = ({
+  theme, setTheme,
+}: {
+  theme: string; setTheme: (theme: string) => void;
+}) => {
 
   function handleClick() {
     if (theme === 'light-theme') {
       setTheme('dark-theme');
     } else {
       setTheme('light-theme');
-    }
-  }
+    };
+  };
 
   return <Image id='toogle-theme'
     width={36}
@@ -24,6 +27,7 @@ const ToogleTheme: ToogThemElem = ({ theme, setTheme }) => {
     }
     onClick={handleClick}
   />
+
 }
 
 export default ToogleTheme;

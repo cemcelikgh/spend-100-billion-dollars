@@ -1,6 +1,4 @@
-import { ItemObje } from "@/types/ObjectTypes";
-
-const items: ItemObje[] = [
+const items = [
   {
     name: 'Monster Truck',
     id: 1,
@@ -105,7 +103,7 @@ const items: ItemObje[] = [
     price: 150000000000,
     amount: 1,
     image: 'international-space-station.jpg'
-  }
+  },
 ];
 
 export default items;

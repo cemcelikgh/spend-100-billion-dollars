@@ -2,19 +2,19 @@ next
 <br>react
 <br>react-dom
 <br>react-scripts
-<br>Jun 2025
+<br>Apr 2026
 <br><https://nextjs.org/docs/app/getting-started/installation>
 
 react-redux
 <br>@reduxjs/toolkit
-<br>Jun 2025
+<br>Apr 2026
 <br><https://redux-toolkit.js.org/tutorials/typescript>
 
 typescript
 <br>@types/node
 <br>@types/react
 <br>@types/react-dom
-<br>Jun 2025
+<br>Apr 2026
 <br><https://www.typescriptlang.org/download/>
 
 Prices of some products
@@ -25,15 +25,15 @@ Prices of brands
 <br>Jun 2025
 <br><https://interbrand.com/best-global-brands/>
 
-./public icons
+public/* icons
 <br>Jun 2025
 <br><https://fontawesome.com/search>
 
-./images
+item-images/ brand images
 <br>Jun 2025
 <br><https://commons.wikimedia.org/wiki/Main_Page>
 
-SVG images
+item-images/ other images
 <br>Jun 2025
 <br><https://www.svgrepo.com/>
 

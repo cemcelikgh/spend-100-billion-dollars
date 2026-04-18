@@ -1,57 +1,60 @@
-import type { ItemObje } from "@/types/ObjectTypes";
-import { useDispatch, useSelector } from "react-redux";
-import { selectShopping, buyItemAction, sellItemAction, setAmountAction }
+import type { ItemObje } from "@/types/types";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks/hooks";
+import { selectShopping, buyItem, sellItem, setAmount }
   from "@/lib/features/shopping/shoppingSlice";
 import { useState } from "react";
-import { setReceiptItemAction } from "@/lib/features/receiptSlice";
+import { setReceiptItem } from "@/lib/features/receiptSlice";
 
 function ItemShopping({ item } : { item: ItemObje }) {
 
-  const { balance } = useSelector(selectShopping);
-  const [buyingCount, setBuyingCount] = useState<number>(0);
-  const [amountInput, setAmountInput] = useState<string>('0');
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const { balance } = useAppSelector(selectShopping);
+  const [buyingCount, setBuyingCount] = useState(0);
+  const [amountInput, setAmountInput] = useState('0');
 
   const handleBuyItem = (item: ItemObje) => {
-    dispatch(buyItemAction(item));
+    dispatch(buyItem(item));
     setBuyingCount(buyingCount + 1);
     setAmountInput(buyingCount => (Number(buyingCount) + 1).toString());
-    dispatch(setReceiptItemAction({ name: item.name, amount: 1, cost: item.price }));
+    dispatch(setReceiptItem({ name: item.name, amount: 1, cost: item.price }));
   };
 
   const handleSellItem = (item: ItemObje) => {
-    dispatch(sellItemAction(item));
+    dispatch(sellItem(item));
     setBuyingCount(buyingCount - 1);
     setAmountInput(buyingCount => (Number(buyingCount) - 1).toString());
-    dispatch(setReceiptItemAction({ name: item.name, amount: -1, cost: -item.price }));
+    dispatch(setReceiptItem({ name: item.name, amount: -1, cost: -item.price }));
   };
 
   const handleAmountInput = (item: ItemObje, e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputStrVal = e.target.value;
-    if (!/^\d*$/.test(inputStrVal)) return;
-    const sanitizedValue = inputStrVal.replace(/^0+/, '') || '0';
-    const inputValue = Number(sanitizedValue);
 
-    dispatch(setAmountAction({ item, operationValue: buyingCount, operator: 'addition' }));
+    dispatch(setAmount({ item, operationValue: buyingCount, operator: 'addition' }));
     setBuyingCount(0);
-    dispatch(setReceiptItemAction({ name: item.name, amount: -buyingCount, cost: -buyingCount * item.price }));
+    dispatch(setReceiptItem({ name: item.name, amount: -buyingCount, cost: -buyingCount * item.price }));
 
     const maxInputValue = Math.min(
       Math.floor((balance +  buyingCount * item.price) / item.price),
       item.amount + buyingCount
     );
+
+    const inputStrVal = e.target.value;
+    if (!/^\d*$/.test(inputStrVal)) return;
+    const sanitizedValue = inputStrVal.replace(/^0+/, '') || '0';
+    const inputValue = Number(sanitizedValue);
+
     if (maxInputValue < inputValue) {
-      dispatch(setAmountAction({ item, operationValue: maxInputValue, operator: 'subtraction' }));
+      dispatch(setAmount({ item, operationValue: maxInputValue, operator: 'subtraction' }));
       setAmountInput(maxInputValue.toString());
       setBuyingCount(maxInputValue);
-      dispatch(setReceiptItemAction({ name: item.name, amount: maxInputValue, cost: maxInputValue * item.price }));
+      dispatch(setReceiptItem({ name: item.name, amount: maxInputValue, cost: maxInputValue * item.price }));
     } else {
-      dispatch(setAmountAction({ item, operationValue: inputValue, operator: 'subtraction' }));
+      dispatch(setAmount({ item, operationValue: inputValue, operator: 'subtraction' }));
       setAmountInput(inputValue.toString());
       setBuyingCount(inputValue);
-      dispatch(setReceiptItemAction({ name: item.name, amount: inputValue, cost: inputValue * item.price }));
-    }
-  }
+      dispatch(setReceiptItem({ name: item.name, amount: inputValue, cost: inputValue * item.price }));
+    };
+
+  };
 
   return (
     <div className="item-shopping">
@@ -70,7 +73,8 @@ function ItemShopping({ item } : { item: ItemObje }) {
         onClick={() => {handleSellItem(item)}}
       >Sell</button>
     </div>
-  )
+  );
+
 }
 
 export default ItemShopping;

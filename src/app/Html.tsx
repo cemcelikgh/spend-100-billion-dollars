@@ -7,12 +7,12 @@ import { Provider } from 'react-redux';
 import { store } from '@/lib/store';
 
 function Html({
-  children
+  children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
 
-  const [theme, setTheme] = useState<string>('system-theme');
+  const [theme, setTheme] = useState('system-theme');
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
     setTheme(mediaQuery.matches ? 'light-theme' : 'dark-theme');
@@ -27,7 +27,8 @@ function Html({
         </Provider>
       </body>
     </html>
-  )
+  );
+
 }
 
 export default Html;
