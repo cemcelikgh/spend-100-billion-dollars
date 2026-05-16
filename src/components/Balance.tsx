@@ -1,9 +1,11 @@
-import { useSelector } from "react-redux";
-import { selectShopping } from "@/lib/features/shopping/shoppingSlice";
+'use client';
+
+import { selectBalance } from "@/lib/features/shopping/shoppingSlice";
+import { useAppSelector } from "@/lib/hooks";
 
 function Balance() {
 
-  const balance = useSelector(selectShopping).balance.toLocaleString('en-US');
+  const balance = useAppSelector(selectBalance).toLocaleString('en-US');
 
   return <div id='balance'>Balance: ${balance}</div>
 

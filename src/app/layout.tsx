@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
+import "./globals.css";
 import Html from "./StoreProvider";
 
 export const metadata: Metadata = {
   title: "Spend 100 Billion Dolars",
-  icons: {
-    icon: '/dollar-sign-solid.svg'
-  }
+  description: "Patika Intermediate Frontend Web Development Path Certification Task",
 };
 
-export default function RootLayout({
-  children
+function RootLayout({
+  children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
-
   return (
     <Html>
       {children}
     </Html>
   );
 }
+
+export default  RootLayout;

@@ -4,11 +4,11 @@
   --balance-top: #2ecc71;
   --balance-bot: #1abc9c;
   --item-cost: #24c486;
-  --item-buy: #2ecc71;
-  --item-buy-active: #57a679;
+  --buy-btn: #2ecc71;
+  --buy-btn-active: #57a679;
   --btn-disable: #808080;
-  --item-sell: #f53b57;
-  --item-sell-active: #bb5b6c;
+  --sell-btn: #f53b57;
+  --sell-btn-active: #bb5b6c;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,11 +18,11 @@
     --balance-top: #f8b800;
     --balance-bot: #d28f1c;
     --item-cost: 	#007800;
-    --item-buy: #779136;
-    --item-buy-active: #7c895b;
+    --buy-btn: #779136;
+    --buy-btn-active: #7c895b;
     --btn-disable: #808080;
-    --item-sell: #68080b;
-    --item-sell-active: #744446;
+    --sell-btn: #68080b;
+    --sell-btn-active: #744446;
   }
 }
 
@@ -32,10 +32,13 @@
   margin: 0;
 }
 
+html {
+  color-scheme: light dark;
+}
+
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
 }
 
 .light-theme {
@@ -44,11 +47,11 @@ body {
   --balance-top: #2ecc71;
   --balance-bot: #1abc9c;
   --item-cost: #24c486;
-  --item-buy: #2ecc71;
-  --item-buy-active: #57a679;
+  --buy-btn: #2ecc71;
+  --buy-btn-active: #57a679;
   --btn-disable: #808080;
-  --item-sell: #f53b57;
-  --item-sell-active: #bb5b6c;
+  --sell-btn: #f53b57;
+  --sell-btn-active: #bb5b6c;
 }
 
 .dark-theme {
@@ -57,11 +60,11 @@ body {
   --balance-top: #f8b800;
   --balance-bot: #D28F1C;
   --item-cost: 	#007800;
-  --item-buy: #779136;
-  --item-buy-active: #7c895b;
+  --buy-btn: #779136;
+  --buy-btn-active: #7c895b;
   --btn-disable: #808080;
-  --item-sell: #68080b;
-  --item-sell-active: #744446;
+  --sell-btn: #68080b;
+  --sell-btn-active: #744446;
 }
 
 body {
@@ -81,6 +84,11 @@ body {
 }
 
 #toogle-theme {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  opacity: 100%;
+  z-index: 3;
   position: absolute;
   top: 25px;
   right: calc(calc((100% - 1024px) / 2) + 37px);
@@ -108,6 +116,14 @@ h1 {
   top: 0;
   position: sticky;
   z-index: 9;
+}
+
+.shopping {
+  margin-top: 20px;
+  height: 39px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 #items {
@@ -151,15 +167,7 @@ h1 {
   text-align: center;
 }
 
-.item-shopping {
-  margin-top: 20px;
-  height: 39px;
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.item-buy, .number-of-items, .item-sell  {
+.item-buy, .numbers-of-items, .item-sell  {
   width: calc((100% - 20px) / 3);
   height: 39px;
   padding: 10px 12px;
@@ -175,37 +183,39 @@ h1 {
 }
 
 .item-buy {
-  background-color: var(--item-buy);
+  background-color: var(--buy-btn);
+  cursor: pointer;
 }
 .item-buy:active {
-  background-color: var(--item-buy-active);
+  background-color: var(--buy-btn-active);
 }
 .item-buy:disabled {
   background-color: var(--btn-disable);
+  cursor: default;
 }
 
-.number-of-items {
+.numbers-of-items {
   background-color: var(--background);
   color: var(--foreground);
   border: 1px solid var(--foreground);
 }
 /* input scroll remove */
-.number-of-items::-webkit-outer-spin-button,
-.number-of-items::-webkit-inner-spin-button {
+.numbers-of-items::-webkit-outer-spin-button,
+.numbers-of-items::-webkit-inner-spin-button {
   -webkit-appearance: none;
   appearance: none;
   margin: 0;
 }
-.number-of-items {
+.numbers-of-items {
   -moz-appearance: textfield;
   appearance: textfield;
 }
 
 .item-sell {
-  background-color: var(--item-sell);
+  background-color: var(--sell-btn);
 }
 .item-sell:active {
-  background-color: var(--item-sell-active);
+  background-color: var(--sell-btn-active);
 }
 .item-sell:disabled {
   background-color: var(--btn-disable);
@@ -346,11 +356,5 @@ li {
   }
   #total {
     font-size: 12px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
   }
 }

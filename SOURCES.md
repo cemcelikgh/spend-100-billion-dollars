@@ -2,20 +2,24 @@ next
 <br>react
 <br>react-dom
 <br>react-scripts
-<br>Jun 2025
+<br>May 2026
 <br><https://nextjs.org/docs/app/getting-started/installation>
 
 react-redux
 <br>@reduxjs/toolkit
-<br>Jun 2025
-<br><https://redux-toolkit.js.org/tutorials/typescript>
+<br>May 2026
+<br><https://redux-toolkit.js.org/usage/nextjs>
 
 typescript
 <br>@types/node
 <br>@types/react
 <br>@types/react-dom
-<br>Jun 2025
+<br>May 2026
 <br><https://www.typescriptlang.org/download/>
+
+Inspiration project
+<br>Jun 2025
+<br><https://neal.fun/spend/>
 
 Prices of some products
 <br>Jun 2025
@@ -25,17 +29,21 @@ Prices of brands
 <br>Jun 2025
 <br><https://interbrand.com/best-global-brands/>
 
-./public icons
-<br>Jun 2025
-<br><https://fontawesome.com/search>
+SVG icons
+<br>May 2026
+<br><https://fontawesome.com/icons>
 
-./images
+items/ brands
 <br>Jun 2025
 <br><https://commons.wikimedia.org/wiki/Main_Page>
 
-SVG images
-<br>Jun 2025
+items/ super luxury car and jet aircraft
+<br>May 2026
 <br><https://www.svgrepo.com/>
+
+items/ monster truck and sports car
+<br>May 2026
+<br><https://www.flaticon.com/>
 
 SVG to PNG
 <br>Jun 2025

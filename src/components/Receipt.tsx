@@ -1,12 +1,13 @@
-import { useSelector } from "react-redux";
+'use client';
+
+import { useAppSelector } from "@/lib/hooks";
 import { selectReceipt } from "@/lib/features/receiptSlice";
-import type { FormatNumber } from "@/types/FunctionTypes";
 
 function Receipt() {
 
-  const receipt = useSelector(selectReceipt);
+  const receipt = useAppSelector(selectReceipt);
 
-  const formatNumber: FormatNumber = (number) => {
+  const formatNumber = (number: number) : string => {
     if (number < 1000) {
         return number.toString();
     } else if (number < 1000000) {
@@ -18,8 +19,8 @@ function Receipt() {
     } else {
         const billion = number / 1000000000;
         return `${billion.toFixed(1).replace(/\.0$/, '')}b`;
-    }
-}
+    };
+  };
 
   return (receipt.length > 0 &&
     <div id='receipt'>
@@ -41,7 +42,8 @@ function Receipt() {
         </div>
       </div>
     </div>
-  )
+  );
+
 }
 
 export default Receipt;
