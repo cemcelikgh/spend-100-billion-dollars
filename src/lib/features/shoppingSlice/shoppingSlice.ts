@@ -1,9 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
-import items from './itemsArray';
-import type { ItemObje, SetAmouParaObje, ShopStatObje }
-  from '@/types/types';
+import type { ItemObje, SetAmouParaObje, ShopStatObje } from '@/types/types';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../store';
+import { createSlice } from '@reduxjs/toolkit';
+import items from './itemsArray';
 
 export const shoppingSlice = createSlice({
   name: 'shopping',
@@ -40,4 +39,5 @@ export const shoppingSlice = createSlice({
 export const { buyItem, sellItem, setAmount } = shoppingSlice.actions;
 export const selectBalance = (state: RootState) => state.shopping.balance;
 export const selectItems = (state: RootState) => state.shopping.items;
+
 export default shoppingSlice.reducer;

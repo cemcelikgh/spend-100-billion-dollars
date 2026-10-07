@@ -1,3 +1,5 @@
+export type Theme = 'light' | 'dark';
+
 export interface ItemObje {
   name: string;
   id: number;

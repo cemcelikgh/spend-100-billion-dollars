@@ -1,7 +1,6 @@
 next
 <br>react
 <br>react-dom
-<br>react-scripts
 <br>May 2026
 <br><https://nextjs.org/docs/app/getting-started/installation>
 
@@ -17,6 +16,11 @@ typescript
 <br>May 2026
 <br><https://www.typescriptlang.org/download/>
 
+eslint
+<br>eslint-config-next
+<br>May 2026
+<br><https://eslint.org/docs/latest/use/getting-started>
+
 Inspiration project
 <br>Jun 2025
 <br><https://neal.fun/spend/>
@@ -29,9 +33,13 @@ Prices of brands
 <br>Jun 2025
 <br><https://interbrand.com/best-global-brands/>
 
-SVG icons
+cash-app.svg
 <br>May 2026
 <br><https://fontawesome.com/icons>
+
+routine.svg
+<br>Oct 2026
+<br><https://fonts.google.com/icons>
 
 items/ brands
 <br>Jun 2025

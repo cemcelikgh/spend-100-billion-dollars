@@ -3,14 +3,12 @@ import Items from '@/components/items/Items';
 import Receipt from '@/components/Receipt';
 
 function Home() {
-  return (
-    <main className='container'>
-      <h1>Spend 100 Billion Dollars</h1>
-      <Balance />
-      <Items />
-      <Receipt />
-    </main>
-  );
+  return <>
+    <h1>Spend 100 Billion Dollars</h1>
+    <Balance />
+    <Items />
+    <Receipt />
+  </>;
 }
 
 export default Home;

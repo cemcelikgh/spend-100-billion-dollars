@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import StoreProvider from "./StoreProvider";
 import "./globals.css";
-import Html from "./StoreProvider";
 
 export const metadata: Metadata = {
   title: "Spend 100 Billion Dolars",
@@ -13,10 +13,10 @@ function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Html>
+    <StoreProvider>
       {children}
-    </Html>
+    </StoreProvider>
   );
 }
 
-export default  RootLayout;
+export default RootLayout;

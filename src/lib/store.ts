@@ -1,6 +1,6 @@
-import shoppingReducer from './features/shoppingSlice/shoppingSlice';
-import receiptReducer from './features/receiptSlice';
 import { configureStore } from '@reduxjs/toolkit';
+import receiptReducer from './features/receiptSlice';
+import shoppingReducer from './features/shoppingSlice/shoppingSlice';
 
 export const makeStore = () => {
   return configureStore({

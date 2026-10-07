@@ -1,18 +1,20 @@
 'use client';
 
 import type { ItemObje } from "@/types/types";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { buyItem, selectBalance, sellItem, setAmount }
   from "@/lib/features/shoppingSlice/shoppingSlice";
-import { useState } from "react";
 import { setReceiptItem } from "@/lib/features/receiptSlice";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { useState } from "react";
 
 function Quantity({ item } : { item: ItemObje }) {
 
-  const dispatch = useAppDispatch();
-  const balance = useAppSelector(selectBalance);
   const [buyingCount, setBuyingCount] = useState(0);
   const [amountInput, setAmountInput] = useState('0');
+
+  const balance = useAppSelector(selectBalance);
+
+  const dispatch = useAppDispatch();
 
   const handleBuyItem = (item: ItemObje) => {
     dispatch(buyItem(item));
@@ -60,20 +62,27 @@ function Quantity({ item } : { item: ItemObje }) {
 
   return (
     <div className="quantity">
-      <button className="item-buy"
-        disabled={item.price > balance || item.amount === 0 ? true : false}
-        onClick={() => {handleBuyItem(item)}}
-      >Buy</button>
-      <input className="numbers-of-items"
+      <button
+        className="item-buy"
+        disabled={item.price > balance || item.amount === 0}
+        onClick={() => { handleBuyItem(item) }}
+      >
+        Buy
+      </button>
+      <input
+        className="numbers-of-items"
         type="number"
         name="amount-of-purchase"
         value={amountInput}
-        onChange={(e) => {handleAmountInput(item, e)}}
+        onChange={e => { handleAmountInput(item, e) }}
       />
-      <button className="item-sell"
-        disabled={buyingCount === 0 ? true : false}
-        onClick={() => {handleSellItem(item)}}
-      >Sell</button>
+      <button
+        className="item-sell"
+        disabled={buyingCount === 0}
+        onClick={() => { handleSellItem(item) }}
+      >
+        Sell
+      </button>
     </div>
   );
 

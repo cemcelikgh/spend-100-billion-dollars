@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '../store';
 import type { ReceItemObje } from '@/types/types';
+import type { RootState } from '../store';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState: ReceItemObje[] = [];
 
@@ -24,4 +24,5 @@ export const receiptSlice = createSlice({
 
 export const { setReceiptItem } = receiptSlice.actions;
 export const selectReceipt = (state: RootState) => state.receipt;
+
 export default receiptSlice.reducer;

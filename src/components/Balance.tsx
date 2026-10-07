@@ -7,7 +7,7 @@ function Balance() {
 
   const balance = useAppSelector(selectBalance).toLocaleString('en-US');
 
-  return <div id='balance'>Balance: ${balance}</div>
+  return <div id='balance'>Balance: ${balance}</div>;
 
 }
 

@@ -1,21 +1,15 @@
 'use client';
 
-import { useEffect, useRef, useState } from "react";
-import ToogleTheme from "../utils/ThemeToggle";
-import { Provider } from 'react-redux';
 import { AppStore, makeStore } from "@/lib/store";
+import { Provider } from 'react-redux';
+import { useRef } from "react";
+import Html from "./Html";
 
-function Html({
+function StoreProvider({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  const [theme, setTheme] = useState('system-theme');
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
-    setTheme(mediaQuery.matches ? 'light-theme' : 'dark-theme');
-  }, []);
 
   const storeRef = useRef<AppStore>(undefined);
   if (!storeRef.current) {
@@ -23,21 +17,13 @@ function Html({
   };
 
   return (
-    <html lang="en" className={theme}
-      style={{colorScheme: theme === 'system-theme' ? undefined
-        : theme === 'light-theme' ? 'light'
-        : 'dark'
-      }}
-    >
-      <body>
-        <ToogleTheme theme={theme} setTheme={setTheme} />
-        <Provider store={storeRef.current}>
-          {children}
-        </Provider>
-      </body>
-    </html>
+    <Provider store={storeRef.current}>
+      <Html>
+        {children}
+      </Html>
+    </Provider>
   );
 
 }
 
-export default Html;
+export default StoreProvider;

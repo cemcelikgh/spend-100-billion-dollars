@@ -1,7 +1,7 @@
 'use client';
 
-import { useAppSelector } from "@/lib/hooks";
 import { selectReceipt } from "@/lib/features/receiptSlice";
+import { useAppSelector } from "@/lib/hooks";
 
 function Receipt() {
 
@@ -9,16 +9,16 @@ function Receipt() {
 
   const formatNumber = (number: number) : string => {
     if (number < 1000) {
-        return number.toString();
+      return number.toString();
     } else if (number < 1000000) {
-        const kilo = number / 1000;
-        return `${kilo.toFixed(1).replace(/\.0$/, '')}k`;
+      const kilo = number / 1000;
+      return `${kilo.toFixed(1).replace(/\.0$/, '')}k`;
     } else if (number >= 1000000 && number < 1000000000) {
-        const million = number / 1000000;
-        return `${million.toFixed(1).replace(/\.0$/, '')}m`;
+      const million = number / 1000000;
+      return `${million.toFixed(1).replace(/\.0$/, '')}m`;
     } else {
-        const billion = number / 1000000000;
-        return `${billion.toFixed(1).replace(/\.0$/, '')}b`;
+      const billion = number / 1000000000;
+      return `${billion.toFixed(1).replace(/\.0$/, '')}b`;
     };
   };
 
